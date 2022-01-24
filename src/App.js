@@ -1,103 +1,30 @@
-import { Button, Container, Form, Grid, Header, Icon, Segment, Statistic } from 'semantic-ui-react';
+import {  Container } from 'semantic-ui-react';
 import './App.css';
+import DisplayBalance from './components/DisplayBalance';
+import DisplayBalances from './components/DisplayBalances';
+import EntryLine from './components/EntryLine';
+import MainHeader from './components/MainHeader';
+import NewEntryForm from './components/NewEntryForm';
 
 function App() {
   return (
     <Container>
 
-      <Header as='h1'>
-      Budget
-      </Header>
+      <MainHeader tittle='Budgets'></MainHeader>
 
-      <Statistic size='small'>
-        <Statistic.Label>Your Balence:</Statistic.Label>
-        <Statistic.Value>2.550,13</Statistic.Value>
-      </Statistic>
+      <DisplayBalance tittle="Your Balence:" value="2.550,13" size="small"></DisplayBalance>
 
-      <Segment textAlign ='center'>
-        <Grid columns={2} divided>
-          <Grid.Row> 
-            <Grid.Column>
-              <Statistic size='tiny' color='green'>
-                <Statistic.Label style={{textAlign:"left"}}>
-                  Income:  
-                </Statistic.Label>  
-                <Statistic.Value>1,0045.50</Statistic.Value>
-              </Statistic>  
-            </Grid.Column>             
-            <Grid.Column>
-            <Statistic size='tiny' color='red'>
-                <Statistic.Label style={{textAlign:"left"}}>
-                  Expenses:  
-                </Statistic.Label>  
-                <Statistic.Value>623.50</Statistic.Value>
-              </Statistic>    
-            </Grid.Column>      
-          </Grid.Row>
-        </Grid>
-      </Segment>
+      <DisplayBalances></DisplayBalances>
 
-      <Header as='h3'>History</Header>
-      <Segment color='red'>
-        <Grid columns={3} textAlign="rigth">
-          <Grid.Row>
-            <Grid.Column width={10} textAlign="left">Something</Grid.Column>
-            <Grid.Column width={3} textAlign="right">$10,00</Grid.Column>
-            <Grid.Column width={3}>
-              <Icon name="edit" bordered/> 
-              <Icon name="trash" bordered/> 
-            </Grid.Column>
-          </Grid.Row>  
-        </Grid>  
-      </Segment> 
+      <MainHeader tittle='History' type='h3'></MainHeader>
 
-      <Segment color='green'>
-        <Grid columns={3} textAlign="rigth">
-          <Grid.Row>
-            <Grid.Column width={10} textAlign="left">Something else</Grid.Column>
-            <Grid.Column width={3} textAlign="right">$105,00</Grid.Column>
-            <Grid.Column width={3}>
-              <Icon name="edit" bordered/> 
-              <Icon name="trash" bordered/> 
-            </Grid.Column>
-          </Grid.Row>  
-        </Grid>  
-      </Segment> 
+      <EntryLine description="Income" value="10.00$"></EntryLine>
+      <EntryLine description="Expense" value="10.00$" isExpense></EntryLine>
 
-      <Segment color='red'>
-        <Grid columns={3} textAlign="rigth">
-          <Grid.Row>
-            <Grid.Column width={10} textAlign="left">Something</Grid.Column>
-            <Grid.Column width={3} textAlign="right">$21,00</Grid.Column>
-            <Grid.Column width={3}>
-              <Icon name="edit" bordered/> 
-              <Icon name="trash" bordered/> 
-            </Grid.Column>
-          </Grid.Row>  
-        </Grid>  
-      </Segment> 
+      <MainHeader tittle='Add New Transaction' type='h3'></MainHeader>
 
-      <Header as="h3"> Add New Transaction</Header>
-      <Form unstackable>
-        <Form.Group>
-          <Form.Input  
-          icon="tag"
-          width={12}
-          label="Description"
-          placeholder="Wew Shinny thing"></Form.Input>
-           <Form.Input  
-          icon="dollar"
-          iconPosition="left"
-          width={4}
-          label="Value"
-          placeholder="100.00"></Form.Input>
-        </Form.Group>
-        <Button.Group style={{marginTop: 20}}>
-          <Button>Cancel</Button>
-          <Button.Or></Button.Or>
-          <Button primary>Ok</Button>
-        </Button.Group>
-      </Form>
+      <NewEntryForm></NewEntryForm>
+
     </Container>
   );
 }
